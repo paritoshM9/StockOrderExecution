@@ -1,6 +1,9 @@
 import pandas as pd
 from stock import StockOrder
 
+# --------------------------------------------------------------------------------------------------
+
+
 """ The below function is used to convert StockOrder object into 
     a tuple containing output values, which will be further
     converted into dataframe """
@@ -12,7 +15,7 @@ def order_to_tuple(stock_order):
 
     return tup3
 
-
+# --------------------------------------------------------------------------------------------------
 """ This function will read the input from file and create a list of StockOrder objects"""
 def readStock(filename):
 
@@ -29,6 +32,7 @@ def readStock(filename):
     return orders
 
 
+# --------------------------------------------------------------------------------------------------
 
 
 """ This function will take list of order objects as input and do the stock processing on all of them.
@@ -45,6 +49,8 @@ def executeStock(orders):
     return orders
 
 
+# --------------------------------------------------------------------------------------------------
+
 """ This function will take list of StockOrder objects which have been executed, and will generate the
     required output file """
 def createOutput(orders):
@@ -58,9 +64,7 @@ def createOutput(orders):
         data.append(temp_tup)
 
     labels = ["StockId", "Side", "Company", "Quantity", "Status"] 
-    # Output dataframe is created containing the output values
     output_df = pd.DataFrame.from_records(data, columns = labels) 
-    # Conversion of dataframe to csv file
     output_df.to_csv('output3.csv',index = False)
 
 
