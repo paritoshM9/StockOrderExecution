@@ -37,11 +37,20 @@ class StockOrder:
                 self.rem_qty = 0
                 self.status = "CLOSED"
                 
+""" The below function is used to convert StockOrder object into 
+    a tuple containing output values, which will be further
+    converted into dataframe """
 
+def order_to_tuple(stock_order):
 
+    tup = (stock_order.id, stock_order.side, stock_order.company)
+    temp_tup = (','.join(map(str,(stock_order.init_qty, stock_order.rem_qty))), stock_order.status)
+    tup3 = tup + temp_tup
 
+    return tup3
 
 import pandas as pd 
+
 
 df = pd.read_csv('D://OneDrive//Desktop//stock.csv')
 #print(df.head())
@@ -59,11 +68,21 @@ for i in range(len(df)-1):
 
 
 
-for j in range(len(orders)):
-    print(orders[j].status)
+#for j in range(len(df)):
+data = df.iloc[0,0:4].values
+#print(data, len(data))
 
+data = []
+#print(order_to_tuple(orders[0]))
+for i in range(len(orders)):
+    temp_tup = order_to_tuple(orders[i])
+    data.append(temp_tup)
 
+labels = ["StockId", "Side", "Company", "Quantity", "Status"]
+output_df = pd.DataFrame.from_records(data, columns = labels)
 
+#print(output_df.head())
+output_df.to_csv('output.csv')
 
 
 
