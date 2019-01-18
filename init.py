@@ -7,6 +7,7 @@ def main(filename):
 
     orders_input = readStock(filename)
     orders_output = executeStock(orders_input)
+    #print(orders_output)
     createOutput(orders_output)
 
 if __name__ == '__main__':
