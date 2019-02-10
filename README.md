@@ -16,4 +16,14 @@ Your task is to implement stock order execution system which takes stock orders 
 CSV file, processes them and prints, as output, the status, remaining quantity of all the
 executed orders.
 
+File Description : 
+
+stock.csv     - Input File </br> 
+output3.csv   - Output File</br>
+stock.py      - Defines StockOrder class</br>
+main_func.py  - Defines all the main functions used for processing orders</br>
+init.py       - User function to run the program</br>
+test_stock.py - Unittesting</br>
+
+
 
